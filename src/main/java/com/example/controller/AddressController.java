@@ -5,15 +5,17 @@ import com.example.domain.AddressEntity;
 import com.example.service.AddressService;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/addressess")
+@Controller
+@RequestMapping("/api/addresses")
 
 public class AddressController {
 
@@ -34,6 +36,9 @@ public class AddressController {
 
         List<AddressEntity> addressList = addressService.readAllAddresses();
 
+        addressList.forEach(System.out::println);
         return ResponseEntity.ok(addressList);
     }
+
+
 }
